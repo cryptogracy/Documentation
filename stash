@@ -1,0 +1,55 @@
+Database (RDBMS)
+    - Hash(sha512)
+    - Timestamp
+    - Lifespan
+    [- Short ID]
+- Server
+    - Golang (Sven, Lars)
+    - Python3+Flask (Sascha)
+    [- Python+Django (Lars)])
+- Frontend (Html + JS)
+    - AngularJS 2.x (Lars)
+    - CryptoJS
+- Datei
+    - /prefix/Hash
+    - Format: <Header>\n\n<Body>
+[- Nginx]
+        [- Upload Module]
+
+- RESTful/like API
+    - GET /
+        - Upload UI
+    - GET /ui/*
+        - Ressources
+    - PUT /api/<sha512-hash>[/<lifespan>]
+        - X-HTTP-LIFESPAN
+        - Returns: JSON
+        - 409 Conflict
+        - 201 Created
+    - GET /api/<sha512-hash>
+        - Returns: File
+        - 200 OK
+        - 404 Not Found
+    - GET /<sha512-hash>
+        - Download UI
+        - 200 OK
+
+Interface:
+    - Upload:
+        - lifespan (dropdown)
+        - password [generator]
+        - browse file
+        [- shorten (checkbox)]
+    - Download
+        - Download button
+        - Password
+
+- Namen
+    - securepaste
+    - securedrop
+    - secopy
+    - securefileexchange [secex [s-ex]]
+    - privacyexchange
+    - schair
+    - steilen.de
+    - sharacy
