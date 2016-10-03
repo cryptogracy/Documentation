@@ -1,8 +1,9 @@
-SharedSecret: Documentation
-===========================
 
-ESTful API
-----------
+Welcome to SharedSecret Docs
+============================
+
+RESTful API
+-----------
 
 - `GET /`
     - Upload UI
