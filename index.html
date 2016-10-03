@@ -88,8 +88,8 @@
 </ul>
 </li>
 <li><code>PUT /api/&lt;hash&gt;</code><ul>
-<li>→ <code>enc(part)</code>
-    - → <code>x-file-lifespan</code> (minutes:int)</li>
+<li>→ <code>enc(part)</code></li>
+<li>→ <code>x-file-lifespan</code> (minutes:int)</li>
 <li>201 CREATED</li>
 <li>409 CONFLICT</li>
 </ul>
@@ -107,15 +107,15 @@
 </ul>
 </li>
 <li><code>PUSH /api/metadata</code><ul>
-<li>→ <code>enc([hash_part_1, hash_part_2, …])</code>
-    - → <code>x-file-lifespan</code> (minutes:int)
-    - ← <code>&lt;id&gt;</code></li>
+<li>→ <code>enc([hash_part_1, hash_part_2, …])</code></li>
+<li>→ <code>x-file-lifespan</code> (minutes:int)</li>
+<li>← <code>&lt;id&gt;</code></li>
 <li>201 CREATED</li>
 <li>400 BAD REQUEST</li>
 </ul>
 </li>
-<li><code>GET /api/metadata/&lt;id&gt;</code>
-    - ← <code>enc([hash_part_1, hash_part_2, …])</code><ul>
+<li><code>GET /api/metadata/&lt;id&gt;</code><ul>
+<li>← <code>enc([hash_part_1, hash_part_2, …])</code></li>
 <li>200 OK</li>
 <li>404 NOT FOUND</li>
 </ul>
@@ -211,5 +211,5 @@ for hash in metadata:
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-10-03 16:27:10.851917
+Build Date UTC : 2016-10-03 18:55:27.344598
 -->
