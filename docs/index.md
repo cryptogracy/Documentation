@@ -16,7 +16,7 @@ RESTful API
     - 404 NOT FOUND
 - `PUT /api/<hash>`
     - → `enc(part)`
-    - → `x-file-lifespan` (minutes:int)
+    - → `x-file-lifespan` (minutes:int)
     - 201 CREATED
     - 409 CONFLICT
 - `GET /api/<hash>`
@@ -29,12 +29,12 @@ RESTful API
     - 200 OK
 - `PUSH /api/metadata`
     - → `enc([hash_part_1, hash_part_2, …])`
-    - → `x-file-lifespan` (minutes:int)
-    - ← `<id>`
+    - → `x-file-lifespan` (minutes:int)
+    - ← `<id>`
     - 201 CREATED
     - 400 BAD REQUEST
 - `GET /api/metadata/<id>`
-    - ← `enc([hash_part_1, hash_part_2, …])`
+    - ← `enc([hash_part_1, hash_part_2, …])`
     - 200 OK
     - 404 NOT FOUND
 
