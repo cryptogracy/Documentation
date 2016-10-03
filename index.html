@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="./img/favicon.ico">
+
+	<title>SharedSecret</title>
+
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="./css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">SharedSecret</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#estful-api">ESTful API</a></li>
+        
+            <li><a href="#example-api-calls">Example API Calls</a></li>
+        
+    
+        <li class="main "><a href="#user-interface">User Interface</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<p>===========================</p>
+<h2 id="estful-api">ESTful API</h2>
+<ul>
+<li><code>GET /</code><ul>
+<li>Upload UI</li>
+<li>Serve <code>/ui/upload.html</code></li>
+<li>200 OK</li>
+</ul>
+</li>
+<li><code>GET /ui/*</code><ul>
+<li>Ressources</li>
+<li>Serve static file</li>
+<li>200 OK</li>
+<li>404 NOT FOUND</li>
+</ul>
+</li>
+<li><code>PUT /api/&lt;hash&gt;</code><ul>
+<li>→ <code>enc(part)</code>
+    - → <code>x-file-lifespan</code> (minutes:int)</li>
+<li>201 CREATED</li>
+<li>409 CONFLICT</li>
+</ul>
+</li>
+<li><code>GET /api/&lt;hash&gt;</code><ul>
+<li>Returns: File</li>
+<li>200 OK</li>
+<li>404 NOT FOUND</li>
+</ul>
+</li>
+<li><code>GET /&lt;hash&gt;</code><ul>
+<li>Download UI</li>
+<li>Serve <code>/ui/download.html</code></li>
+<li>200 OK</li>
+</ul>
+</li>
+<li><code>PUSH /api/metadata</code><ul>
+<li>→ <code>enc([hash_part_1, hash_part_2, …])</code>
+    - → <code>x-file-lifespan</code> (minutes:int)
+    - ← <code>&lt;id&gt;</code></li>
+<li>201 CREATED</li>
+<li>400 BAD REQUEST</li>
+</ul>
+</li>
+<li><code>GET /api/metadata/&lt;id&gt;</code>
+    - ← <code>enc([hash_part_1, hash_part_2, …])</code><ul>
+<li>200 OK</li>
+<li>404 NOT FOUND</li>
+</ul>
+</li>
+</ul>
+<h3 id="example-api-calls">Example API Calls</h3>
+<p>Upload:</p>
+<pre><code>for hash(part) in parts:
+    PUT /api/&lt;hash&gt;
+        -&gt; enc(part)
+        &lt;- 201 CREATED
+
+PUSH /api/metadata
+    -&gt; enc([hash_part_1, hash_part_2, …])
+    -&gt; x-file-lifespan (minutes:int)
+    &lt;- 201 CREATED
+    &lt;- &lt;id&gt;
+</code></pre>
+
+<p>Download:</p>
+<pre><code>GET /api/metadata/&lt;id&gt;
+    200 OK
+    &lt;- enc([hash_part_1, hash_part_2, …])
+
+for hash in metadata:
+    GET /api/&lt;hash&gt;
+        200 OK
+        &lt;- enc(part)
+</code></pre>
+
+<h2 id="user-interface">User Interface</h2>
+<ul>
+<li>Before Upload:<ul>
+<li>lifespan (dropdown)</li>
+<li>password [generator]</li>
+<li>browse file</li>
+<li>Upload button</li>
+</ul>
+</li>
+<li>After Upload:<ul>
+<li>Download link</li>
+</ul>
+</li>
+<li>Download<ul>
+<li>Password</li>
+<li>Download button</li>
+</ul>
+</li>
+</ul></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="./js/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/highlight.pack.js"></script>
+        <script>var base_url = '.';</script>
+        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
+        <script src="./js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 0.15.3
+Build Date UTC : 2016-10-03 16:24:08.153376
+-->
