@@ -14,12 +14,12 @@ RESTful API
     - Serve static file
     - 200 OK
     - 404 NOT FOUND
-- `PUT /api/<hash>`
+- `PUT /api/files/<hash>`
     - → `enc(part)`
     - → `x-file-lifespan` (minutes:int)
     - 201 CREATED
     - 409 CONFLICT
-- `GET /api/<hash>`
+- `GET /api/files/<hash>`
     - Returns: File
     - 200 OK
     - 404 NOT FOUND
@@ -45,7 +45,7 @@ Upload:
 
 ```
 for hash(part) in parts:
-    PUT /api/<hash>
+    PUT /api/files/<hash>
         -> enc(part)
         <- 201 CREATED
 
@@ -64,7 +64,7 @@ GET /api/metadata/<id>
     <- enc([hash_part_1, hash_part_2, …])
 
 for hash in metadata:
-    GET /api/<hash>
+    GET /api/files/<hash>
         200 OK
         <- enc(part)
 ```
