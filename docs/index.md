@@ -9,6 +9,10 @@ RESTful API
     - Upload UI
     - Serve `/ui/upload.html`
     - 200 OK
+- `GET /<hash>`
+    - Download UI
+    - Serve `/ui/download.html`
+    - 200 OK
 - `GET /ui/*`
     - Ressources
     - Serve static file
@@ -23,10 +27,6 @@ RESTful API
     - Returns: File
     - 200 OK
     - 404 NOT FOUND
-- `GET /<hash>`
-    - Download UI
-    - Serve `/ui/download.html`
-    - 200 OK
 - `PUSH /api/metadata`
     - → `enc([hash_part_1, hash_part_2, …])`
     - → `x-file-lifespan` (minutes:int)
